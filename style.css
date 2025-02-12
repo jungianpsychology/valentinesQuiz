@@ -1,74 +1,53 @@
+/* style.css */
 body {
+    background-color: #ffccdd;
     font-family: 'Arial', sans-serif;
     text-align: center;
-    background-color: #ffccd5;
-    color: #800020;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
-
-.quiz-container {
+.container {
     max-width: 600px;
     margin: 50px auto;
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    border: 3px solid #ff69b4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-h2, h3 {
-    color: #d63384;
+h1 {
+    color: #ff6699;
 }
-
 button {
-    background: #ff69b4;
+    background-color: #ff6699;
     color: white;
     border: none;
     padding: 10px 20px;
-    cursor: pointer;
+    margin-top: 20px;
     border-radius: 5px;
+    cursor: pointer;
     font-size: 16px;
 }
-
 button:hover {
-    background: #e60073;
+    background-color: #ff3366;
 }
-
-.result {
-    display: none;
-    padding: 20px;
-    background: #fff0f6;
-    border: 2px solid #ff69b4;
-    border-radius: 10px;
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 20px;
 }
-
-@keyframes floatingHearts {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+.option {
+    background: #ff99bb;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+.option:hover {
+    background: #ff6699;
 }
 
-.heart {
-    position: absolute;
-    bottom: 0;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    clip-path: polygon(50% 0%, 100% 30%, 75% 100%, 50% 80%, 25% 100%, 0% 30%);
-    animation: floatingHearts 5s infinite linear;
-}
-
-@keyframes rotatingCogs {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.cog {
-    position: absolute;
-    width: 40px;
-    height:
 
 
 
