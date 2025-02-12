@@ -1,14 +1,31 @@
-/* script.js */
-function startQuiz() {
-    window.location.href = 'question1.html';
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const questions = document.querySelectorAll(".question");
+    const nextButton = document.getElementById("next-btn");
+    const quizContainer = document.getElementById("quiz-container");
+    const resultContainer = document.getElementById("result");
+    let currentQuestion = 0;
 
-function nextQuestion(currentQuestion) {
-    let nextQuestion = currentQuestion + 1;
-    if (nextQuestion <= 9) {
-        window.location.href = `question${nextQuestion}.html`;
-    } else {
-        window.location.href = 'result.html';
+    function showQuestion(index) {
+        questions.forEach((q, i) => {
+            q.style.display = i === index ? "block" : "none";
+        });
     }
-}
 
+    nextButton.addEventListener("click", function () {
+        const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+        if (!selectedOption) {
+            alert("Please select an answer before proceeding.");
+            return;
+        }
+
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        } else {
+            quizContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        }
+    });
+
+    showQuestion(currentQuestion);
+});
