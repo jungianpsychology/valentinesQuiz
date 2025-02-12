@@ -1,49 +1,28 @@
-<!-- question1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question 1</title>
+    <title>Fun Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>What is the best Valentine's Day gift?</h1>
-        <div class="options">
-            <div class="option" onclick="nextQuestion()">A. Chocolates</div>
-            <div class="option" onclick="nextQuestion()">B. Flowers</div>
-            <div class="option" onclick="nextQuestion()">C. Teddy Bear</div>
-            <div class="option" onclick="nextQuestion()">D. Love Letter</div>
+    <div class="quiz-container">
+        <h1>Fun Quiz!</h1>
+        <div id="question-container">
+            <p id="question-text"></p>
+            <div id="options"></div>
+        </div>
+        <button id="next-button">Next</button>
+         <div id="question-container">
+            <p id="question2-text"></p>
+            <div id="options"></div>
+        </div>
+        <button id="next-button">Next</button>
+        <div id="result">
+            <img id="result-image" src="" alt="Your Result">
         </div>
     </div>
-    <script>
-        function nextQuestion() {
-            window.location.href = 'question2.html';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-/* Repeat for question2.html to question9.html with different questions */
-
-<!-- result.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Result</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Your Valentine Quiz Result!</h1>
-        <img src="images/result-image.png" alt="Your Result" width="300">
-    </div>
-</body>
-</html>
-
-
-
-
