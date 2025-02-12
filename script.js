@@ -1,31 +1,60 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const questions = document.querySelectorAll(".question");
-    const nextButton = document.getElementById("next-btn");
-    const quizContainer = document.getElementById("quiz-container");
-    const resultContainer = document.getElementById("result");
-    let currentQuestion = 0;
-
-    function showQuestion(index) {
-        questions.forEach((q, i) => {
-            q.style.display = i === index ? "block" : "none";
-        });
+const quizData = [
+    { 
+        question: "What's your favorite color?", 
+        options: ["Pink", "Blue", "Green", "Yellow"], 
+        answer: "Pink" 
+    },
+    { 
+        question: "Pick a pet!", 
+        options: ["Cat", "Dog", "Bunny", "Bird"], 
+        answer: "Cat" 
+    },
+    { 
+        question: "What's your favorite snack?", 
+        options: ["Cookies", "Fruits", "Chips", "Chocolate"], 
+        answer: "Cookies" 
     }
+];
 
-    nextButton.addEventListener("click", function () {
-        const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
-        if (!selectedOption) {
-            alert("Please select an answer before proceeding.");
-            return;
-        }
+let currentQuestion = 0;
 
-        if (currentQuestion < questions.length - 1) {
-            currentQuestion++;
-            showQuestion(currentQuestion);
-        } else {
-            quizContainer.style.display = "none";
-            resultContainer.style.display = "block";
-        }
-    });
+const questionText = document.getElementById("question-text");
+const optionsContainer = document.getElementById("options");
+const nextButton = document.getElementById("next-button");
+const resultDiv = document.getElementById("result");
+const resultImage = document.getElementById("result-image");
 
-    showQuestion(currentQuestion);
+function loadQuestion() {
+    if (currentQuestion < quizData.length) {
+        let q = quizData[currentQuestion];
+        questionText.textContent = q.question;
+        optionsContainer.innerHTML = "";
+        
+        q.options.forEach(option => {
+            let button = document.createElement("button");
+            button.textContent = option;
+            button.onclick = () => {
+                currentQuestion++;
+                loadQuestion();
+            };
+            optionsContainer.appendChild(button);
+        });
+
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("question-container").style.display = "none";
+    nextButton.style.display = "none";
+    resultDiv.style.display = "block";
+    resultImage.src = "cute-result.png"; // Add a cute image in your repo
+}
+
+nextButton.addEventListener("click", () => {
+    currentQuestion++;
+    loadQuestion();
 });
+
+loadQuestion();
