@@ -1,109 +1,49 @@
+<!-- question1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Quiz</title>
+    <title>Question 1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="quiz-container" id="quiz-container">
-        <h2>Valentine's Day Quiz</h2>
-        <div class="question" id="question1">
-            <label>What do you eat for breakfast?</label><br>
-            <input type="radio" name="q1" value="black coffee"> Black Coffee
-            <input type="radio" name="q1" value="eggs"> Eggs
-            <input type="radio" name="q1" value="protein drink"> Protein Drink
-            <input type="radio" name="q1" value="else"> Else
+    <div class="container">
+        <h1>What is the best Valentine's Day gift?</h1>
+        <div class="options">
+            <div class="option" onclick="nextQuestion()">A. Chocolates</div>
+            <div class="option" onclick="nextQuestion()">B. Flowers</div>
+            <div class="option" onclick="nextQuestion()">C. Teddy Bear</div>
+            <div class="option" onclick="nextQuestion()">D. Love Letter</div>
         </div>
-
-        <div class="question" id="question2">
-            <label>You just landed in NYC. Would you rather?</label><br>
-            <input type="radio" name="q2" value="out"> Immediately go out
-            <input type="radio" name="q2" value="in"> Spend the night in
-        </div>
-
-        <div class="question" id="question3">
-            <label>What is your ideal level of clinginess?</label><br>
-            <input type="radio" name="q3" value="25%"> 25%
-            <input type="radio" name="q3" value="50%"> 50%
-            <input type="radio" name="q3" value="75%"> 75%
-            <input type="radio" name="q3" value="100%"> 100%
-        </div>
-
-        <div class="question" id="question4">
-            <label>ideally how long would you want to spend with your partner every day not counting sleep?</label><br>
-            <input type="radio" name="q4" value="25%"> 3 hours
-            <input type="radio" name="q4" value="50%"> 6 hours
-            <input type="radio" name="q4" value="75%"> 9 hours
-            <input type="radio" name="q4" value="100%"> infinity
-        </div>
-
-        <div class="question" id="question5">
-            <label>fav movie genre?</label><br>
-            <input type="radio" name="q5" value="25%"> horror
-            <input type="radio" name="q5" value="50%"> action
-            <input type="radio" name="q5" value="75%"> drama
-            <input type="radio" name="q5" value="100%"> romance
-        </div>
-
-        <div class="question" id="question6">
-            <label>fav movie genre?</label><br>
-            <input type="radio" name="q6" value="25%"> horror
-            <input type="radio" name="q6" value="50%"> action
-            <input type="radio" name="q6" value="75%"> drama
-            <input type="radio" name="q6" value="100%"> romance
-        </div>
-
-        <div class="question" id="question7">
-            <label>fav snack?</label><br>
-            <input type="radio" name="q7" value="25%"> chips
-            <input type="radio" name="q7" value="50%"> cookies
-            <input type="radio" name="q7" value="75%"> ice cream
-            <input type="radio" name="q7" value="100%"> else
-        </div>
-
-        <div class="question" id="question8">
-            <label>what makes you feel the most loved?</label><br>
-            <input type="radio" name="q8" value="25%"> i love you
-            <input type="radio" name="q8" value="50%"> i wanna fuck you
-            <input type="radio" name="q8" value="75%"> i made this for you
-            <input type="radio" name="q8" value="100%"> im here for you
-        </div>
-
-        <div class="question" id="question9">
-            <label>what is your favorite position?</label><br>
-            <input type="radio" name="q9" value="25%"> missionary
-            <input type="radio" name="q9" value="50%"> cowgirl
-            <input type="radio" name="q9" value="75%"> doggy
-            <input type="radio" name="q9" value="100%"> else
-        </div>
-
-    <div class="result" id="result">
-        <h3>Compatibility Results:</h3>
-        <p>Based on extensive scientific research, you are 100% compatible with someone who is:</p>
-        <ul>
-            <li>Thai</li>
-            <li>1 year older</li>
-            <li>A Taurus</li>
-            <li>Born on the 13th</li>
-            <li>Owns a golden retriever</li>
-            <li>5’5” tall</li>
-            <li>Not fat</li>
-            <li>Has a 3-letter name</li>
-            <li>ENFJ personality</li>
-            <li>Always right</li>
-            <li>A software engineer</li>
-            <li>Went to GT</li>
-            <li>Lives in NYC</li>
-            <li>Loves the color pink</li>
-        </ul>
-        <img src="final-image.png" alt="Holding hands">
     </div>
-
-    <script src="script.js"></script>
+    <script>
+        function nextQuestion() {
+            window.location.href = 'question2.html';
+        }
+    </script>
 </body>
 </html>
+
+/* Repeat for question2.html to question9.html with different questions */
+
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Valentine Quiz Result!</h1>
+        <img src="images/result-image.png" alt="Your Result" width="300">
+    </div>
+</body>
+</html>
+
 
 
 
