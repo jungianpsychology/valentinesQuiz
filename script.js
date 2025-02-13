@@ -1,18 +1,44 @@
 const quizData = [
     { 
-        question: "What's your favorite color?", 
-        options: ["Pink", "Blue", "Green", "Yellow"], 
-        answer: "Pink" 
+        question: "what do u like to eat for breakfast", 
+        options: ["black coffee", "eggs", "nothing", "else"], 
+        //answer: "Pink" 
     },
     { 
-        question: "Pick a pet!", 
-        options: ["Cat", "Dog", "Bunny", "Bird"], 
-        answer: "Cat" 
+        question: "you just landed in nyc. would you rather?!", 
+        options: ["immediately go out", "spend the night in"], 
+        //answer: "Cat" 
     },
     { 
-        question: "What's your favorite snack?", 
-        options: ["Cookies", "Fruits", "Chips", "Chocolate"], 
-        answer: "Cookies" 
+        question: "what is your ideal level of clinginess?", 
+        options: ["25%", "50%", "75%", "100%"], 
+        //answer: "Cookies" 
+    },
+        
+    { 
+        question: "do you need some time to yourself everyday?", 
+        options: ["not really", "yes a litte bit", "yes a medium bit", "yes a lot"], 
+        //answer: "Cookies" 
+    },  
+    { 
+        question: "fav movie genre?", 
+        options: ["action", "horror", "romance", "comedy", "drama"] 
+        //answer: "Cookies" 
+    },
+    { 
+        question: "what is your favorite snack?", 
+        options: ["cookies", "chips", "ice cream", "else"] 
+        //answer: "Cookies" 
+    },
+        { 
+        question: "what makes u feel the most loved?", 
+        options: ["i love you", "i wanna fuck you", "i made this for you", "im here for you"] 
+        //answer: "Cookies" 
+    },
+    { 
+        question: "what is your favorite position", 
+        options: ["missionary", "doggy", "cowgirl", "else"] 
+        //answer: "Cookies" 
     }
 ];
 
@@ -20,7 +46,7 @@ let currentQuestion = 0;
 
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options");
-const nextButton = document.getElementById("next-button");
+//const nextButton = document.getElementById("next-button");
 const resultDiv = document.getElementById("result");
 const resultImage = document.getElementById("result-image");
 
