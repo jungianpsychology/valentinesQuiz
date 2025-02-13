@@ -1,86 +1,72 @@
 const quizData = [
-    { 
-        question: "what do u like to eat for breakfast", 
-        options: ["black coffee", "eggs", "nothing", "else"], 
-        //answer: "Pink" 
-    },
-    { 
-        question: "you just landed in nyc. would you rather?!", 
-        options: ["immediately go out", "spend the night in"], 
-        //answer: "Cat" 
-    },
-    { 
-        question: "what is your ideal level of clinginess?", 
-        options: ["25%", "50%", "75%", "100%"], 
-        //answer: "Cookies" 
-    },
-        
-    { 
-        question: "do you need some time to yourself everyday?", 
-        options: ["not really", "yes a litte bit", "yes a medium bit", "yes a lot"], 
-        //answer: "Cookies" 
-    },  
-    { 
-        question: "fav movie genre?", 
-        options: ["action", "horror", "romance", "comedy", "drama"] 
-        //answer: "Cookies" 
-    },
-    { 
-        question: "what is your favorite snack?", 
-        options: ["cookies", "chips", "ice cream", "else"] 
-        //answer: "Cookies" 
-    },
-        { 
-        question: "what makes u feel the most loved?", 
-        options: ["i love you", "i wanna fuck you", "i made this for you", "im here for you"] 
-        //answer: "Cookies" 
-    },
-    { 
-        question: "what is your favorite position", 
-        options: ["missionary", "doggy", "cowgirl", "else"] 
-        //answer: "Cookies" 
-    }
+    { page: 2, image: "image2.webp", question: "What do you eat for breakfast?", answers: ["Black coffee", "Eggs", "Protein drink", "else"] },
+    { page: 3, image: "image3.webp", question: "What is your ideal level of clinginess?", answers: ["25%", "50%", "75%", "100%"] },
+    { page: 4, image: "image4.webp", question: "Ideally how long would you want to spend with your partner every day not counting sleep?", answers: ["3 hours", "6 hours", "8 hours", "Infinity"] },
+    { page: 5, image: "image5.webp", question: "Fav movie genre?", answers: ["Horror", "Action", "Drama", "Romance", "Comedy"] },
+    { page: 6, image: "image6.webp", question: "What is your fav snack?", answers: ["Chips", "Cookies", "Ice cream", "else"] },
+    { page: 7, image: "image7.webp", question: "You just landed in NYC. Would you rather?", answers: ["Immediately go out", "Spend the night in"] },
+    { page: 8, image: "image8.webp", question: "Which statement makes you feel the most loved?", answers: ["I love you", "I wanna fuck you", "I made this for you", "I'm here for you"] },
+    { page: 9, image: "image9.webp", question: "What is your favorite position?", answers: ["Missionary", "Cowgirl", "Doggy", "else"] }
 ];
 
-let currentQuestion = 0;
+let answers = [];
 
-const questionText = document.getElementById("question-text");
-const optionsContainer = document.getElementById("options");
-const nextButton = document.getElementById("next-button");
-const resultDiv = document.getElementById("result");
-const resultImage = document.getElementById("result-image");
+function loadQuizPage() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let page = parseInt(urlParams.get('page'));
 
-function loadQuestion() {
-    if (currentQuestion < quizData.length) {
-        let q = quizData[currentQuestion];
-        questionText.textContent = q.question;
-        optionsContainer.innerHTML = "";
-        
-        q.options.forEach(option => {
+    let quizItem = quizData.find(q => q.page === page);
+    if (!quizItem) {
+        window.location.href = "results.html?page=10";
+        return;
+    }
+
+    document.getElementById("quiz-body").style.backgroundImage = `url('${quizItem.image}')`;
+    document.getElementById("question-text").innerText = quizItem.question;
+
+    let answerButtons = document.getElementById("answer-buttons");
+    answerButtons.innerHTML = "";
+
+    quizItem.answers.forEach(answer => {
+        if (answer === "else") {
+            let input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = "Your answer";
+            input.onchange = (e) => saveAnswer(page, e.target.value);
+            answerButtons.appendChild(input);
+        } else {
             let button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => {
-                currentQuestion++;
-                loadQuestion();
-            };
-            optionsContainer.appendChild(button);
-        });
+            button.innerText = answer;
+            button.onclick = () => saveAnswer(page, answer);
+            answerButtons.appendChild(button);
+        }
+    });
+}
 
+function saveAnswer(page, answer) {
+    answers.push({ question: page, answer: answer });
+
+    if (page < 9) {
+        window.location.href = `quiz.html?page=${page + 1}`;
     } else {
-        showResult();
+        sendAnswers();
     }
 }
 
-function showResult() {
-    document.getElementById("question-container").style.display = "none";
-    nextButton.style.display = "none";
-    resultDiv.style.display = "block";
-    resultImage.src = "cute-result.png"; // Add a cute image in your repo
+function sendAnswers() {
+    let answerText = answers.map(a => `Q${a.question}: ${a.answer}`).join("\n");
+    
+    let blob = new Blob([answerText], { type: "text/plain" });
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "answers.txt";
+    a.click();
+
+    window.location.href = "results.html?page=10";
 }
 
-nextButton.addEventListener("click", () => {
-    currentQuestion++;
-    loadQuestion();
-});
-
-loadQuestion();
+window.onload = function() {
+    if (window.location.pathname.includes("quiz.html")) {
+        loadQuizPage();
+    }
+};
