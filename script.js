@@ -43,12 +43,10 @@ function loadQuizPage() {
     });
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvTHiW0jJ6a_jHFqrbFrXxcXZ-gsHvKHOy7B3ioFTcVfUdtRe6rNvqqSEYg/exec";
-
 function saveAnswer(page, answer) {
     answers.push({ question: page, answer: answer });
 
-    if (page < 10) {
+    if (page < 9) {
         window.location.href = `quiz.html?page=${page + 1}`;
     } else {
         sendAnswers();
@@ -56,6 +54,7 @@ function saveAnswer(page, answer) {
 }
 
 function sendAnswers() {
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvTHiW0jJ6a_jHFqrbFrXxcXZ-gsHvKHOy7B3ioFTcVfUdtRe6rNvqqSEYg/exec";
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -64,9 +63,9 @@ function sendAnswers() {
     .then(response => response.text())
     .then(data => {
         console.log("Server Response:", data);
-        window.location.href = "results.html?page=10";
     })
     .catch(error => console.error("Error:", error));
+    window.location.href = "results.html?page=10";
 }
 
 
