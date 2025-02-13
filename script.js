@@ -9,6 +9,9 @@ const quizData = [
     { page: 9, image: "image9.webp", question: "What is your favorite position?", answers: ["Missionary", "Cowgirl", "Doggy", "else"] }
 ];
 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvTHiW0jJ6a_jHFqrbFrXxcXZ-gsHvKHOy7B3ioFTcVfUdtRe6rNvqqSEYg/exec";
+
+
 let answers = [];
 
 function loadQuizPage() {
@@ -43,6 +46,8 @@ function loadQuizPage() {
     });
 }
 
+let answers = [];
+
 function saveAnswer(page, answer) {
     answers.push({ question: page, answer: answer });
 
@@ -54,16 +59,19 @@ function saveAnswer(page, answer) {
 }
 
 function sendAnswers() {
-    let answerText = answers.map(a => `Q${a.question}: ${a.answer}`).join("\n");
-    
-    let blob = new Blob([answerText], { type: "text/plain" });
-    let a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "answers.txt";
-    a.click();
-
-    window.location.href = "results.html?page=10";
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers })
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log("Server Response:", data);
+        window.location.href = "results.html?page=10";
+    })
+    .catch(error => console.error("Error:", error));
 }
+
 
 window.onload = function() {
     if (window.location.pathname.includes("quiz.html")) {
