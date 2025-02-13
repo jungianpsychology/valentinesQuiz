@@ -9,9 +9,6 @@ const quizData = [
     { page: 9, image: "image9.webp", question: "What is your favorite position?", answers: ["Missionary", "Cowgirl", "Doggy", "else"] }
 ];
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvTHiW0jJ6a_jHFqrbFrXxcXZ-gsHvKHOy7B3ioFTcVfUdtRe6rNvqqSEYg/exec";
-
-
 let answers = [];
 
 function loadQuizPage() {
@@ -45,6 +42,8 @@ function loadQuizPage() {
         }
     });
 }
+
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvTHiW0jJ6a_jHFqrbFrXxcXZ-gsHvKHOy7B3ioFTcVfUdtRe6rNvqqSEYg/exec";
 
 function saveAnswer(page, answer) {
     answers.push({ question: page, answer: answer });
