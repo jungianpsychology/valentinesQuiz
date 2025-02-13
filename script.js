@@ -48,7 +48,7 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvT
 function saveAnswer(page, answer) {
     answers.push({ question: page, answer: answer });
 
-    if (page < 9) {
+    if (page < 10) {
         window.location.href = `quiz.html?page=${page + 1}`;
     } else {
         sendAnswers();
