@@ -46,8 +46,6 @@ function loadQuizPage() {
     });
 }
 
-let answers = [];
-
 function saveAnswer(page, answer) {
     answers.push({ question: page, answer: answer });
 
