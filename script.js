@@ -46,7 +46,7 @@ let currentQuestion = 0;
 
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options");
-//const nextButton = document.getElementById("next-button");
+const nextButton = document.getElementById("next-button");
 const resultDiv = document.getElementById("result");
 const resultImage = document.getElementById("result-image");
 
