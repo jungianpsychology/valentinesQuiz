@@ -54,7 +54,7 @@ function saveAnswer(page, answer) {
 }
 
 function sendAnswers() {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCZy2uX1cZvTHiW0jJ6a_jHFqrbFrXxcXZ-gsHvKHOy7B3ioFTcVfUdtRe6rNvqqSEYg/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx-JIT-ey_GBwYmCvWIaoSrbGhRwq-9KxkCYmYJ0GrC0oeqCisHTiSBFSKfe3xR2Ri0Zw/exec";
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
