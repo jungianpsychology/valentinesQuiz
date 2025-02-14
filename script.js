@@ -63,7 +63,7 @@ function sendAnswers() {
         method: "POST",
         mode: "no-cors",  // Force fetch to skip CORS check
         headers: {
-            "Content-Type": "application/text"
+            "Content-Type": "text/plain"
         },
         body: JSON.stringify({ answers })
     })
