@@ -1,4 +1,4 @@
-🎀 Carl Jung Compatability Quiz 🎀
+🎀 Jungian Psychology Valentines Day Quiz 🎀
 
 Welcome to the Jungian Archetypes Valentine Quiz! 🥰 This is a simple and scientifically accurate test based on Jungian Psychology that reccomends traits of comptability based on your answers.
 
