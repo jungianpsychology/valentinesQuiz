@@ -61,7 +61,7 @@ function sendAnswers() {
     
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        mode: "cors",  // Allow CORS
+        mode: "no-cors",  // Allow CORS
         headers: {
             "Content-Type": "application/json"
         },
