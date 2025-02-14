@@ -70,12 +70,12 @@ function sendAnswers() {
     })
     .then(response => {
         console.log("Server Response:", response);  // Log server response
-        alert("Response received. Check Google Sheets.");
+        //alert("Response received. Check Google Sheets.");
         window.location.href = "results.html?page=10";
     })
     .catch(error => {
         console.error("Fetch Error:", error);
-        alert("Fetch error: " + error);
+        //alert("Fetch error: " + error);
     });
 }
 
