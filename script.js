@@ -45,12 +45,8 @@ function loadQuizPage() {
 
 function saveAnswer(page, answer) {
     answers.push({ question: page, answer: answer });
-
-    if (page < 9) {
-        window.location.href = `quiz.html?page=${page + 1}`;
-    } else {
-        sendAnswers();
-    }
+    sendAnswers();
+    window.location.href = `quiz.html?page=${page + 1}`;
 }
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5toeXpyMrb25h3IN7njaobSvnQ86U-nx7f2snEu85nu3ADDUqPVL_UC_g3yApHSc0jA/exec";
