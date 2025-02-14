@@ -56,34 +56,27 @@ function saveAnswer(page, answer) {
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxudyT7wQQEh-NTqbke3fAYq8zYz4DiEb0SXtqVdjUMflTbSa_v386WNvBYYqNq4r6zUQ/exec";
 
 function sendAnswers() {
-    console.log("Sending answers..."); // Debugging log
-    alert("Attempting to send answers..."); // Alert user
-    
+    console.log("Sending answers...");  // Debugging log
+    alert("Attempting to send answers...");  // Alert user
+
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        mode: "cors",  // Allow CORS
+        mode: "no-cors",  // Force fetch to skip CORS check
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ answers })
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Server Response:", data);  // Log server response
-        alert("Response: " + JSON.stringify(data));  // Alert user with response
-        if (data.status === "Success") {
-            window.location.href = "results.html?page=10";
-        } else {
-            alert("Error sending answers: " + data.message);
-        }
+    .then(response => {
+        console.log("Server Response:", response);  // Log server response
+        alert("Response received. Check Google Sheets.");
+        window.location.href = "results.html?page=10";
     })
     .catch(error => {
-        console.error("Error:", error);
+        console.error("Fetch Error:", error);
         alert("Fetch error: " + error);
     });
 }
-
-
 
 window.onload = function() {
     if (window.location.pathname.includes("quiz.html")) {
