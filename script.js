@@ -53,20 +53,36 @@ function saveAnswer(page, answer) {
     }
 }
 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznflUUSGupWG9mnxuIoHiQOgynQDNALgnI62GNMbzX0ctLCy4-VUW9U_kdd7IBJTbvKg/exec"; // Replace with your actual Web App URL
+
 function sendAnswers() {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-rF521z4cQC5mXgdiJLPHrq3fXh7McDYNnfH4MNYiFm4z6XtHqlGzqpFq2UFz0MVhig/exec";
+    console.log("Sending answers..."); // Debugging log
+    alert("Attempting to send answers..."); // Alert user
+    
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        mode: "cors",  // Allow CORS
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({ answers })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
-        console.log("Server Response:", data);
+        console.log("Server Response:", data);  // Log server response
+        alert("Response: " + JSON.stringify(data));  // Alert user with response
+        if (data.status === "Success") {
+            window.location.href = "results.html?page=10";
+        } else {
+            alert("Error sending answers: " + data.message);
+        }
     })
-    .catch(error => console.error("Error:", error));
-    window.location.href = "results.html?page=10";
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Fetch error: " + error);
+    });
 }
+
 
 
 window.onload = function() {
