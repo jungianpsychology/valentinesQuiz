@@ -57,7 +57,8 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5toeXpyMrb2
 
 function sendAnswers() {
     console.log("Sending answers...");  // Debugging log
-    alert("Attempting to send answers...");  // Alert user
+    //alert("Attempting to send answers...");  // Alert user
+    let textData = answers.map(a => `Q${a.question}: ${a.answer}`).join("\n"); // Convert to plain text format
 
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
@@ -65,7 +66,7 @@ function sendAnswers() {
         headers: {
             "Content-Type": "text/plain"
         },
-        body: JSON.stringify({ answers })
+        body: textData
     })
     .then(response => {
         console.log("Server Response:", response);  // Log server response
