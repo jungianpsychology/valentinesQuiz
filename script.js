@@ -53,7 +53,7 @@ function saveAnswer(page, answer) {
     }
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3DjQt80gFFHbfrOwZEZZXZl6aMAJLxphz_DRWTS0gfpY4F1JQQ0YRw9pIyENWLegwiA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5toeXpyMrb25h3IN7njaobSvnQ86U-nx7f2snEu85nu3ADDUqPVL_UC_g3yApHSc0jA/exec";
 
 function sendAnswers() {
     console.log("Sending answers...");  // Debugging log
